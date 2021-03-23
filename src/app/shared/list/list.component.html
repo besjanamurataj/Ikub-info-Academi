@@ -1,0 +1,13 @@
+<div class="container px-0">
+  <div class="col-sm-12 px-0">
+    <ul [ngClass]="groupStyleClass" class="list-group list-group-flush container">
+      <li class="list-group-item p-0" appHighlight="#007bff" [ngClass]="itemStyleClass" *ngFor="let item  of items">
+        <ng-container *ngTemplateOutlet="template; context: { item : item }">
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="items && !items.length" class="col-sm-12 px-0 text-center">
+    <h3>No Elements found!</h3>
+  </div>
+</div>

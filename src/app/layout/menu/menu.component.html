@@ -1,0 +1,16 @@
+
+<nav class="navbar navbar-expand fixed-top navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand">Task manager</a>
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active" *ngFor="let item of items;">
+          <a class="nav-link" [routerLink]="item.link">{{item?.label}}</a>
+        </li>
+      </ul>
+      <button class="btn btn-outline-light my-2 my-sm-0" (click)="logout()" >Logout</button>
+    </div>
+  </div>
+</nav>
+
+

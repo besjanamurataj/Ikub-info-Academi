@@ -1,0 +1,10 @@
+/**
+ * A more specific selector overwrites bootstrap display properties, but they still enable users
+ * to overwite them on their apps.
+ */
+
+  
+ .modal {
+    background-color: rgb(0 0 0 / 28%);
+  }
+  

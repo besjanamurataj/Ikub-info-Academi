@@ -1,0 +1,26 @@
+<app-card title='Manage categories'>
+  <div class="d-flex flex-row-reverse bd-highlight">
+    <button class="btn btn-success" (click)="categoryModal.openModal()" type="submit">New category</button>
+  </div>
+  <app-list itemStyleClass="my-2" [items]="categories$ | async" [template]="categoryTemplate">
+  </app-list>
+  <ng-template #categoryTemplate let-category="item">
+    <div class="d-flex flex-column bd-highlight">
+      <div class="p-2 bd-highlight">
+        <h4> {{category.name}}</h4>
+      </div>
+      <div class="p-2 bd-highlight">{{category.description}}</div>
+      <div class="p-2 bd-highlight">
+        <button type="button" class="btn btn-danger float-right"
+          (click)="deleteCategoryConfirmation.openModal(); selectedCategory = category">Delete</button>
+        <button type="button" class="btn btn-warning float-right mx-1"
+          (click)="categoryModal.openModal(category)">Update</button>
+      </div>
+    </div>
+  </ng-template>
+  <app-confirmation #deleteCategoryConfirmation title="Confirmation" (confirmEvent)="deleteCategory($event)"
+    message="Are you sure you want to delete this category ?">
+  </app-confirmation>
+  <app-category-modal #categoryModal>
+  </app-category-modal>
+</app-card>

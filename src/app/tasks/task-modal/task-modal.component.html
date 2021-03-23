@@ -1,0 +1,47 @@
+<form class="container" #taskForm="ngForm"
+  [class.was-validated]="taskForm.invalid && (taskForm.dirty || taskForm.touched)">
+  <app-modal #modal>
+    <div modal-header>
+      <h2>{{task?.id ? 'Update task' : 'Create task'}}</h2>
+    </div>
+    <div modal-body>
+      <div class="row">
+        <div class="col">
+          <label for="title" class="form-label">Title*</label>
+          <div class="input-group has-validation">
+            <input name="title" required [(ngModel)]="task.title" #title="ngModel" type="text" class="form-control"
+              id="title">
+            <div class="invalid-feedback" *ngIf="title.invalid && (title.dirty || title.touched)">
+              Please insert a title!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="category" class="form-label">Category*</label>
+          <select name="category" required [(ngModel)]="task.categoryId" #category="ngModel" class="form-control"
+            id="category">
+            <option selected disabled value="">Choose...</option>
+            <option *ngFor="let category of categories$ | async" [value]="category.id"> {{category.name}}</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="category.invalid && (category.dirty || category.touched)">
+            Please insert a category!
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="description" class="form-label">Description</label>
+          <textarea class="form-control" [(ngModel)]="task.description" name="description" id="description"
+            rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div modal-footer>
+      <button type="button" class="btn btn-secondary" (click)="modal.close()" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary ml-2" [disabled]="taskForm?.invalid"
+        (click)="save(); taskForm.reset()">Save</button>
+    </div>
+  </app-modal>
+</form>

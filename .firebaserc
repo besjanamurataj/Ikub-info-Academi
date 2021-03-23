@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "task-manager-16be4": {
+      "hosting": {
+        "task-manager": [
+          "task-manager-16be4"
+        ]
+      }
+    }
+  }
+}
